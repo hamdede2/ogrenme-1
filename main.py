@@ -6,7 +6,8 @@ import speech_recognition as sr
 import os
 import time
 import random
-
+import locale
+locale.setlocale(locale.LC_ALL, '')
 r = sr.Recognizer()
 
 
@@ -34,6 +35,10 @@ def speak(string):
     os.remove(file)
 
 def response(voice):
+    if "Bugünün tarihi ne" in voice:
+         speak(datetime.now().strftime('%A:%B:%Y'))
+
+
     if "nasılsın" in voice:
         speak("iyiyim, teşekkürler sen nasılsın")
     if "saat kaç" in voice:
